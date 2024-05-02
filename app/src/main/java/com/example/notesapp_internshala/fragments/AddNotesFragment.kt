@@ -1,5 +1,8 @@
-package com.example.notesapp_internshala.fragments
+```
+// Folder Name: fragments
+// File Name: AddNotesFragment.kt
 
+// Importing required libraries
 import android.app.Dialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -13,11 +16,12 @@ import com.example.notesapp_internshala.Firebase.FirestoreClass
 import com.example.notesapp_internshala.R
 import com.example.notesapp_internshala.models.Note
 
-
-
+// Class Definition of AddNotesFragment
 class AddNotesFragment : Fragment() {
+    // Variable for progress dialog
     lateinit var mProgressDialog: Dialog
 
+    // onCreateView method of Fragment
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -80,3 +84,4 @@ class AddNotesFragment : Fragment() {
     }
 
 }
+```
