@@ -8,8 +8,10 @@ package com.example.notesapp_internshala
 
 import org.junit.Test
 import org.junit.Assert.*
+
 // This class is used for unit testing.
 class ExampleUnitTest {
+
     // This function is annotated with @Test, indicating it should be run as a test case.
     @Test
     fun addition_isCorrect() {
