@@ -1,63 +1,43 @@
-### **Folder Name: com.example.notesapp_internshala.acitivity**
+### **Folder Name: com.example.notesapp_internshala.activity**
 
 ### **File Name: MainActivity.kt**
 
-```kotlin
-// Package Declaration
-package com.example.notesapp_internshala.acitivity
+**// Package Declaration**
 
-// Importing required classes
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.os.Handler
-import android.widget.Toast
-import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
-import com.example.notesapp_internshala.R
-import com.example.notesapp_internshala.fragments.NotesFragment
+// This is the package declaration. 
+// In this project, we are using a package named com.example.notesapp_internshala.activity, 
+// which means this file is part of the activity module. 
+// You can think of a package as a folder in a file system, 
+// where you can organize your Kotlin files into different categories.
 
-// Main Activity Class
-class MainActivity : AppCompatActivity() {
+// **// Importing required classes**
 
-    // Declare a variable to keep track of whether the back button has been pressed once
-    private var backPressedOnce = false
+// Here, we are importing the necessary classes. 
+// We are importing AppCompatActivity from the androidx.appcompat.app package. 
+// AppCompatActivity is the base class for activities that provide a Material Design user interface. 
+// We are also importing Bundle, NavHostFragment, NavGraph, and NotesFragment from various packages.
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        // Set the layout
-        setContentView(R.layout.activity_main)
+// **// Main Activity Class**
 
-        // Initialize variables
-        val navController: NavController
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        navController = navHostFragment.navController
-        navController.setGraph(R.navigation.nav_graph)
-    }
+// This is the main activity class. 
+// It extends AppCompatActivity, which means it inherits all the functionality of AppCompatActivity. 
+// This class defines the main activity of our application.
 
-    override fun onBackPressed() {
-        // Get the current fragment
-        val currentFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
+**// Declare a variable to keep track of whether the back button has been pressed once**
 
-        // Check if the current fragment is NotesFragment
-        if (currentFragment is NotesFragment) {
-            // Check if the back button has been pressed once
-            if (backPressedOnce) {
-                // If the back button has been pressed twice, exit the application
-                super.onBackPressed()
-            } else {
-                // If the back button has been pressed once, show a toast message
-                Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show()
-                // Set the backPressedOnce variable to true
-                backPressedOnce = true
+// We declare a private variable called backPressedOnce. 
+// This variable will be used to track whether the back button has been pressed once or not.
 
-                // Create a handler to reset the backPressedOnce variable after a delay
-                val handler = Handler()
-                handler.postDelayed({ backPressedOnce = false }, 2000)
-            }
-        } else {
-            // If the current fragment is not NotesFragment, proceed with the default behavior
-            super.onBackPressed()
-        }
-    }
-}
-```
+**// Override onCreate**
+
+// The onCreate method is the entry point of the activity. 
+// It is called when the activity is first created. 
+// Here, we are setting the layout for the activity, initializing variables, and setting up the navigation controller.
+
+// **// Override onBackPressed**
+
+// The onBackPressed method is called when the back button is pressed. 
+// Here, we are handling the back button press differently based on whether the current fragment is NotesFragment or not. 
+// If the current fragment is NotesFragment, we show a toast message and set the backPressedOnce variable to true. 
+// We also create a handler to reset the backPressedOnce variable after a delay of 2 seconds. 
+// If the current fragment is not NotesFragment, we proceed with the default behavior of super.onBackPressed().
