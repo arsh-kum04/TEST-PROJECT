@@ -1,6 +1,8 @@
-**Folder Name:** adapter
+1. **Folder Name:** adapter
 
-**File Name:** ItemNotesAdapter.kt
+2. **File Name:** ItemNotesAdapter.kt
+
+3. **Line by line documented Code:**
 
 ```kotlin
 // 1. Folder Name: adapter
