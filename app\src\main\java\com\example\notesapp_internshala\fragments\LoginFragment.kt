@@ -1,37 +1,19 @@
+---
 **Folder Name:** fragments
 **File Name:** LoginFragment.kt
 
 ```kotlin
-// Import necessary libraries
-import android.app.Dialog
-import android.content.Context
-import android.content.Intent
-import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
-import android.widget.Toast
-import androidx.navigation.findNavController
-import com.example.notesapp_internshala.R
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.ApiException
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GoogleAuthProvider
-
-
+// This is LoginFragment class which is responsible for login functionality for the app.
 class LoginFragment : Fragment() {
 
+    // Declare the variables
     private lateinit var mGoogleSignInClient: GoogleSignInClient
     private lateinit var mAuth: FirebaseAuth
+    private lateinit var mProgressDialog: Dialog
+
     companion object {
         private const val RC_SIGN_IN = 9001
     }
-    lateinit var mProgressDialog: Dialog
 
     // Override onCreateView to inflate the fragment's layout and initialize views
     override fun onCreateView(
@@ -40,6 +22,7 @@ class LoginFragment : Fragment() {
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_login, container, false)
 
+        // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance()
 
         // Configure Google Sign In options
@@ -170,5 +153,4 @@ class LoginFragment : Fragment() {
         mProgressDialog.dismiss()
     }
 }
-
 ```
