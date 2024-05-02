@@ -34,11 +34,12 @@ public class AddNotesFragment extends Fragment {
         closeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Pop the fragment back stack to go to the previous fragment
                 fragmentManager.popBackStack();
             }
         });
 
-        // save button to save the notes using Room Database
+        // save button to save the notes using FirestoreClass
         TextView tvSaveBtn = rootView.findViewById(R.id.tvSaveBtn);
         tvSaveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,14 +49,18 @@ public class AddNotesFragment extends Fragment {
                         "Please enter the Notes Title",
                         Toast.LENGTH_LONG).show();
                 } else {
+                    // Show a progress dialog while saving the note
                     showProgressDialog();
 
+                    // Get the current user's ID
                     String currentUserId = FirestoreClass.getCurrentUserId();
 
+                    // Create a new Note object with the user ID, title, and description
                     Note note = new Note(currentUserId,
                         etNotesTitle.getText().toString(),
                         etNotesDescription.getText().toString());
 
+                    // Use FirestoreClass to create the note in the database
                     FirestoreClass.createNote(this, note);
                 }
             }
@@ -65,17 +70,23 @@ public class AddNotesFragment extends Fragment {
     }
 
     public void showProgressDialog() {
+        // Initialize the progress dialog
         mProgressDialog = new Dialog(requireContext());
+        // Set the layout of the progress dialog
         mProgressDialog.setContentView(R.layout.dialog_progress);
+        // Show the progress dialog
         mProgressDialog.show();
     }
 
     public void hideProgressDialog() {
+        // Dismiss the progress dialog
         mProgressDialog.dismiss();
     }
 
     public void noteAddedSuccessfully() {
+        // Hide the progress dialog
         hideProgressDialog();
+        // Pop the fragment back stack to go to the previous fragment
         fragmentManager.popBackStack();
     }
 }
