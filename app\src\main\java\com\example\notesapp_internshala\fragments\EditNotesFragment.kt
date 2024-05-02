@@ -2,11 +2,13 @@
 
 ### File Name: EditNotesFragment.kt
 
-### Line by line documented Code:
+#### Line by line documented Code:
 
 ```kotlin
+// Package declaration
 package com.example.notesapp_internshala.fragments
 
+// Import necessary classes and libraries
 import android.app.Dialog
 import android.os.Bundle
 import android.util.Log
@@ -23,18 +25,15 @@ import com.example.notesapp_internshala.models.Note
 import com.example.notesapp_internshala.utils.Constants
 import com.google.firebase.firestore.FirebaseFirestore
 
-
 class EditNotesFragment : Fragment() {
 
+    // Define a companion object to hold constants
     companion object {
         const val ARG_NOTE = "note"
     }
 
-    // lateinit is used to initialize a variable later in the code.
-    // mProgressDialog: Dialog used to show a progress dialog while updating the note.
+    // Declare member variables
     private lateinit var mProgressDialog: Dialog
-
-    // mFireStore: FirebaseFirestore represents an object of the Firestore database.
     private val mFireStore = FirebaseFirestore.getInstance()
 
     // onCreateView() method is called when the fragment is created and returns the View associated with the fragment.
@@ -46,10 +45,10 @@ class EditNotesFragment : Fragment() {
         // Inflate the layout for this fragment.
         val rootView =  inflater.inflate(R.layout.fragment_edit_notes, container, false)
 
-        // Retrieving the note object passed from the previous fragment using arguments.getParcelable<>().
+        // Retrieve the note object passed from the previous fragment using arguments.getParcelable<>().
         val note = arguments?.getParcelable<Note>(ARG_NOTE)
 
-        // Accessing the title and description of the note.
+        // Access the title and description of the note.
         val etEditNotesTitle: TextView = rootView.findViewById(R.id.etEditNotesTitle)
         val etEditNotesDescription: TextView = rootView.findViewById(R.id.etEditNotesBody)
 
@@ -61,28 +60,24 @@ class EditNotesFragment : Fragment() {
 
 
         val tvEditBtn: TextView = rootView.findViewById(R.id.tvEditBtn)
-        tvEditBtn.setOnClickListener{
-
-            // Checking if the note title is empty or blank.
-            if(etEditNotesTitle.text.isNullOrBlank()) {
-                Toast.makeText(context,
-                    "Please enter the Notes Title",
-                    Toast.LENGTH_LONG).show()
+        tvEditBtn.setOnClickListener {
+            // Check if the note title is empty or blank.
+            if (etEditNotesTitle.text.isNullOrBlank()) {
+                Toast.makeText(context, "Please enter the Notes Title", Toast.LENGTH_LONG).show()
             } else {
 
-                // Showing a progress dialog while updating the note.
+                // Show a progress dialog while updating the note.
                 showProgressDialog()
-                
-                // Getting the document ID of the note to be updated.
+
+                // Get the document ID of the note to be updated.
                 Log.d("beforeDocumentId", "documentId: ${note!!.documentId}")
 
-                // Creating a HashMap to store the updated title and description of the note.
-                val updateHashMap = HashMap<String , Any>()
+                // Create a HashMap to store the updated title and description of the note.
+                val updateHashMap = HashMap<String, Any>()
                 updateHashMap["title"] = etEditNotesTitle.text.toString()
                 updateHashMap["description"] = etEditNotesDescription.text.toString()
 
-
-                // Updating the note in the Firestore database.
+                // Update the note in the Firestore database.
                 mFireStore.collection(Constants.NOTES)
                     .document(note.documentId)
                     .update(updateHashMap)
@@ -91,12 +86,11 @@ class EditNotesFragment : Fragment() {
                         // Display a success message to the user.
                         Toast.makeText(context, "Note updated successfully", Toast.LENGTH_LONG).show()
 
-                        // Calling the updateNoteSuccessfully() method to update the UI.
+                        // Call the updateNoteSuccessfully() method to update the UI.
                         updateNoteSuccessfully()
                     }
 
-                    .addOnFailureListener {exception->
-
+                    .addOnFailureListener { exception ->
                         // Log the exception.
                         Log.d("TAG", "updateNote: $exception")
 
@@ -120,10 +114,8 @@ class EditNotesFragment : Fragment() {
         return rootView
     }
 
-
     // Method to show the progress dialog.
     fun showProgressDialog() {
-
         // Create a new dialog and set its content view to the dialog_progress layout.
         mProgressDialog = Dialog(requireContext())
         mProgressDialog.setContentView(R.layout.dialog_progress)
@@ -150,8 +142,5 @@ class EditNotesFragment : Fragment() {
         // Close the fragment and go back to the previous fragment.
         fragmentManager?.popBackStack()
     }
-
-
-
 }
 ```
