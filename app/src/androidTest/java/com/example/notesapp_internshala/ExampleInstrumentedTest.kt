@@ -2,21 +2,21 @@
 
 **File Name:** ExampleInstrumentedTest.java
 
+
 ```java
-// Import the necessary Android testing libraries
-// Line: 1
+// Line: 1 - This line imports the androidx test library for instrumentation testing.
 import androidx.test.platform.app.InstrumentationRegistry;
-// Line: 2
+
+// Line: 2 - This line imports the androidx test library for running tests on the AndroidJUnit4 framework.
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
-// Import the JUnit testing framework
-// Line: 4
+// Line: 4 - This line imports the JUnit4 framework for writing and running tests.
 import org.junit.Test;
-// Line: 5
+
+// Line: 5 - This line imports the JUnit4 Runner class for running tests.
 import org.junit.runner.RunWith;
 
-// Import the Assert class for assertions
-// Line: 7
+// Line: 7 - This line imports the Assert class from the JUnit4 framework for assertions.
 import org.junit.Assert.*;
 
 /**
@@ -25,43 +25,17 @@ import org.junit.Assert.*;
  * See [testing documentation](http://d.android.com/tools/testing).
  * Line: 12 & 13 - Javadoc Comments
  */
-// Annotate the class with @RunWith(AndroidJUnit4::class) to indicate that this is an instrumented test
-// Line: 15
+// Line: 15 - This line annotates the class with @RunWith(AndroidJUnit4::class) to indicate that this is an instrumented test.
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
-    // Define a test method using the @Test annotation
-    // Line: 18
+    // Line: 18 - This line defines a test method using the @Test annotation to test the app's context.
     @Test
     fun useAppContext() {
-        // Get the context of the app under test using InstrumentationRegistry.getInstrumentation().targetContext
-        // Line: 20
+        // Line: 20 - This line gets the context of the app under test using InstrumentationRegistry.getInstrumentation().targetContext.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext;
 
-        // Assert that the package name of the app under test matches the expected package name using assertEquals
-        // Line: 23
+        // Line: 23 - This line asserts that the package name of the app under test matches the expected package name using assertEquals.
         assertEquals("com.example.notesapp_internshala", appContext.packageName);
     }
 }
 ```
-
-**Line-by-Line Documentation:**
-
-// Line: 1: Imports the androidx test library for instrumentation testing.
-
-// Line: 2: Imports the androidx test library for running tests on the AndroidJUnit4 framework.
-
-// Line: 4: Imports the JUnit4 framework for writing and running tests.
-
-// Line: 5: Imports the JUnit4 Runner class for running tests.
-
-// Line: 7: Imports the Assert class from the JUnit4 framework for assertions.
-
-// Line: 12-13: Javadoc comments describing the purpose of the class.
-
-// Line: 15: Annotates the class with @RunWith(AndroidJUnit4::class) to indicate that it is an instrumented test.
-
-// Line: 18: Defines a test method annotated with @Test to test the app's context.
-
-// Line: 20: Gets the context of the app under test using InstrumentationRegistry.getInstrumentation().targetContext.
-
-// Line: 23: Asserts that the package name of the app under test matches the expected package name using assertEquals.
