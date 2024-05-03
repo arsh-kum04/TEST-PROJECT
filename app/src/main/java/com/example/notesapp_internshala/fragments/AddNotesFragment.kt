@@ -85,3 +85,23 @@ class AddNotesFragment : Fragment() {
 
 }
 ```
+1. **Folder Name**: fragments
+2. **File Name**: AddNotesFragment.kt
+3. **Line by Line Documented Code**:
+   - **Line 1**: Importing required libraries for Android development and working with fragments.
+   - **Line 7-9**: Class definition for AddNotesFragment, a subclass of Fragment, for adding new notes.
+   - **Line 11**: Declaring a variable for progress dialog.
+   - **Line 13-26**: onCreateView method, responsible for fragment lifecycle and initializing the user interface.
+   - **Line 15**: Inflating layout for this fragment, i.e., fragment_add_notes.xml.
+   - **Line 17-18**: Accessing views from the inflated layout, including title and description edit texts.
+   - **Line 20-22**: Setting close button's click listener to navigate back to the previous fragment.
+   - **Line 24-37**: Setting save button's click listener to save the note using Firestore database if a title is provided.
+   - **Line 25**: Checking if the title is empty and displaying a toast message if so.
+   - **Line 26**: Showing progress dialog when saving the note.
+   - **Line 27**: Commenting out the previous code for adding notes to Room database.
+   - **Line 28-30**: Getting the current user's ID from FirestoreClass.
+   - **Line 31-33**: Creating a Note object with title, description, and current user ID.
+   - **Line 34**: Calling createNote method from FirestoreClass to save the note.
+   - **Line 39-41**: showProgressDialog method to display a progress dialog.
+   - **Line 43-45**: hideProgressDialog method to hide the progress dialog.
+   - **Line 47-49**: noteAddedSuccessfully method to handle successful note addition, hide progress dialog, and navigate back.
