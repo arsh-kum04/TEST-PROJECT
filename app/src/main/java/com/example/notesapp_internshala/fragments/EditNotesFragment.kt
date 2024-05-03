@@ -3,6 +3,7 @@
 **File Name:** EditNotesFragment.kt
 
 ```kotlin
+
 // Importing necessary libraries and classes
 package com.example.notesapp_internshala.fragments
 
@@ -33,7 +34,15 @@ class EditNotesFragment : Fragment() {
     private lateinit var mProgressDialog: Dialog
     private val mFireStore = FirebaseFirestore.getInstance()
 
-    // onCreateView method which inflates the layout and handles UI interactions
+    // Function Description:
+    // This onCreate function is used to inflate the layout for the fragment and handle UI interactions.
+    // It initializes the layout, gets the note object from the arguments bundle, sets the title and description of the note, and sets click listeners for the edit and close buttons.
+    // Parameters:
+    // inflater: The LayoutInflater object that can be used to inflate any views in the fragment.
+    // container: The ViewGroup into which the fragment's UI should be embedded.
+    // savedInstanceState: If non-null, this fragment is being re-constructed from a previous saved state as given here.
+    // Returns:
+    // The View for the fragment's UI, or null.
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -102,7 +111,12 @@ class EditNotesFragment : Fragment() {
     }
 
 
-    // Method to show the progress dialog
+    // Function Description:
+    // This function shows the progress dialog with a loading animation while the note is being edited.
+    // Parameters:
+    // None
+    // Returns:
+    // Nothing
     fun showProgressDialog() {
 
         mProgressDialog = Dialog(requireContext())
@@ -111,12 +125,23 @@ class EditNotesFragment : Fragment() {
         mProgressDialog.show()
     }
 
-    // Method to hide the progress dialog
+    // Function Description:
+    // This function hides the progress dialog after the note has been edited and updated in the database.
+    // Parameters:
+    // None
+    // Returns:
+    // Nothing
     fun hideProgressDialog() {
         mProgressDialog.dismiss()
     }
 
-    // Method to handle successful update of the note
+    // Function Description:
+    // This function is called when the note has been successfully updated in the database.
+    // It hides the progress dialog and pops the fragment from the backstack, returning to the previous screen.
+    // Parameters:
+    // None
+    // Returns:
+    // Nothing
     fun updateNoteSuccessfully() {
         hideProgressDialog()
         Log.d("SUCCESS", "updateNoteSuccessfully")
