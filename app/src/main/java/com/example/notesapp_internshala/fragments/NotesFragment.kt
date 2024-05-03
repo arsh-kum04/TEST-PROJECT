@@ -1,9 +1,9 @@
 **Folder Name: fragments**
 **File Name: NotesFragment.kt**
-
 **Line by Line Documented Code:**
 
 ```kotlin
+// Package declaration
 package com.example.notesapp_internshala.fragments
 
 import android.app.Dialog
