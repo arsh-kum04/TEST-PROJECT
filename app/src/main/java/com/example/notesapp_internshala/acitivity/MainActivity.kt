@@ -2,7 +2,7 @@
 
 **File Name: MainActivity.kt**
 
-```kotlin
+```
 // Package declaration
 package com.example.notesapp_internshala.acitivity
 
