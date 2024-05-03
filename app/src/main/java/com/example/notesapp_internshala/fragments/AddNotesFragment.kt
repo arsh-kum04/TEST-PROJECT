@@ -45,6 +45,7 @@ class AddNotesFragment : Fragment() {
         // close button to get back to previous fragment
         val closeBtn: ImageButton = rootView.findViewById(R.id.closeBtn);
         closeBtn.setOnClickListener{
+            // Pop the fragment backstack to go back to previous fragment
             fragmentManager?.popBackStack()
         }
 
@@ -52,13 +53,18 @@ class AddNotesFragment : Fragment() {
         val tvSaveBtn: TextView = rootView.findViewById(R.id.tvSaveBtn);
         tvSaveBtn.setOnClickListener {
             if (etNotesTitle.text.isNullOrBlank()) {
+                // Show a Toast message if the title is empty
                 Toast.makeText(context,
                     "Please enter the Notes Title",
                     Toast.LENGTH_LONG).show()
             } else {
+                // Show the progress dialog while saving the note
                 showProgressDialog()
+                // Get the current user ID
                 val currentUserId = FirestoreClass().getCurrentUserId()
+                // Create a Note object with the title, description, and current user ID
                 val note = Note(currentUserId,etNotesTitle.text.toString(), etNotesDescription.text.toString())
+                // Call the createNote function of FirestoreClass to save the note to the database
                 FirestoreClass().createNote(this, note)
             }
         }
@@ -66,17 +72,23 @@ class AddNotesFragment : Fragment() {
     }
 
     fun showProgressDialog() {
+        // Initialize the progress dialog
         mProgressDialog = Dialog(requireContext())
+        // Set the content view of the progress dialog
         mProgressDialog.setContentView(R.layout.dialog_progress);
+        // Show the progress dialog
         mProgressDialog.show();
     }
 
     fun hideProgressDialog() {
+        // Dismiss the progress dialog
         mProgressDialog.dismiss()
     }
 
     fun noteAddedSuccessfully() {
+        // Hide the progress dialog
         hideProgressDialog()
+        // Pop the fragment backstack to go back to the previous fragment
         fragmentManager?.popBackStack()
     }
 }
