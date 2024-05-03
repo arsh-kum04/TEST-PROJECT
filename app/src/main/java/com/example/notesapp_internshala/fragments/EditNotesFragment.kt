@@ -3,7 +3,6 @@
 **File Name:** EditNotesFragment.kt
 
 ```kotlin
-
 // Folder : com.example.notesapp_internshala.fragments
 
 // File : EditNotesFragment.kt
