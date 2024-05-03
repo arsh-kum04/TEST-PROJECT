@@ -43,6 +43,8 @@ class ItemNotesAdapter(private val list: ArrayList<Note>):
         return list.size
     }
 
+    private var listener: OnNoteItemClickListener? = null // Initialize listener to null
+
     // Binds data to the view holder
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         // Get the current note
