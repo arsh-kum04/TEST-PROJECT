@@ -2,7 +2,6 @@
 
 **File Name:** ExampleInstrumentedTest.java
 
-
 ```java
 // Line: 1 - This line imports the androidx test library for instrumentation testing.
 import androidx.test.platform.app.InstrumentationRegistry;
