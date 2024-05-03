@@ -2,29 +2,22 @@
 
 **File Name: ExampleInstrumentedTest.java**
 
-// Import the necessary libraries
+// Importing the necessary Android testing libraries.
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
 import org.junit.Assert.*;
 
-/**
- * Instrumented test, which will execute on an Android device.
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
-// Run the test using JUnit4
+// Specifying the test runner as JUnit4.
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
     @Test
-    // Test the application context
+    // This test method is annotated with @Test to indicate that it should be run as a test.
     fun useAppContext() {
-        // Get the context of the app under test
+        // Get the application context using InstrumentationRegistry.getInstrumentation().targetContext.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        // Assert that the package name of the app under test is correct
+        // Assert that the package name of the application under test is correct using assertEquals().
         assertEquals("com.example.notesapp_internshala", appContext.packageName)
     }
 }
