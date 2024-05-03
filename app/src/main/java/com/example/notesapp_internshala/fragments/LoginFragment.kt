@@ -2,7 +2,7 @@
 
 **File Name: LoginFragment.java**
 
-**Line-by-line documented Code:**
+**Line by line documented Code:**
 ```java
 // Package declaration for the fragment class
 package com.example.notesapp_internshala.fragments;
@@ -120,20 +120,4 @@ public class LoginFragment extends Fragment {
                 showProgressDialog(); // Show a progress dialog while the authentication process is underway
 
                 // Attempt to authenticate with Firebase using the Google sign-in account
-                firebaseAuthWithGoogle(account.getIdToken()); // Attempt to authenticate with Firebase using the Google sign-in account's ID token
-            } catch (ApiException e) {
-                // Log the error code
-                Log.d("TAG", "onActivityResult: " + e.getStatusCode()); // Log the error code
-
-                // Show a toast message indicating that Google sign-in failed
-                Toast.makeText(context, "Google sign in failed: " + e.getMessage(), Toast.LENGTH_SHORT).show(); // Show a toast message indicating that Google sign-in failed
-            }
-        }
-    }
-
-    // Method to authenticate with Firebase using the Google sign-in account
-    private void firebaseAuthWithGoogle(String idToken) {
-        // Create a Google credential using the ID token
-        GoogleAuthProvider.getCredential(idToken, null); // Create a Google credential using the ID token
-
-        // Sign in with the Google credential
+                firebaseAuthWithGoo
