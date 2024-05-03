@@ -2,7 +2,6 @@
 
 **File Name: LoginFragment.java**
 
-**Line by line documented Code:**
 ```java
 // Package declaration for the fragment class
 package com.example.notesapp_internshala.fragments;
@@ -121,3 +120,4 @@ public class LoginFragment extends Fragment {
 
                 // Attempt to authenticate with Firebase using the Google sign-in account
                 firebaseAuthWithGoo
+```
