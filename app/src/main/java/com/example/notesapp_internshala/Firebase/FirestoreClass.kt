@@ -2,6 +2,8 @@
 
 **File Name: FirestoreClass.kt**
 
+**Line by Line Documented Code:**
+
 ```kotlin
 // This class provides an interface to Firebase Firestore.
 // It contains functions for creating a new note, getting a list of notes,
@@ -26,7 +28,7 @@ class FirestoreClass {
         // Add the note to the 'notes' collection.
         mFireStore.collection(Constants.NOTES)
             .document()
-            .set(note, SetOptions.merge())
+            .set(note, SetOptions.merge()) // Merge the new data with any existing data in the document
             .addOnSuccessListener {
                 // Show a toast message to indicate that the note was added successfully.
                 Toast.makeText(
@@ -60,8 +62,8 @@ class FirestoreClass {
     fun getNotesList(fragment: NotesFragment) {
         // Get the notes for the current user.
         mFireStore.collection(Constants.NOTES)
-            .whereEqualTo(Constants.CURRENT_USER_ID, getCurrentUserId())
-            .orderBy(Constants.TIMESTAMP, Query.Direction.DESCENDING)
+            .whereEqualTo(Constants.CURRENT_USER_ID, getCurrentUserId()) // Filter the collection by the current user's ID
+            .orderBy(Constants.TIMESTAMP, Query.Direction.DESCENDING) // Order the results by timestamp in descending order
             .get()
             .addOnSuccessListener {
                 // Create an array list to store the notes.
@@ -88,9 +90,6 @@ class FirestoreClass {
 
                 // Log the error.
                 Log.e(fragment.javaClass.simpleName , "Error while loading Notes" , e)
-
-                // Log the error.
-                Log.d("TAG", "getNotesList: $e")
             }
     }
 
