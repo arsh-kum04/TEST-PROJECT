@@ -1,9 +1,9 @@
+**Folder Name: fragments**
+**File Name: AddNotesFragment.java**
+
+**Line by line documented Code:**
+
 ```java
-// Folder Name: fragments
-// File Name: AddNotesFragment.java
-
-// This class represents a fragment for adding new notes to the application.
-
 import android.app.Dialog;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
