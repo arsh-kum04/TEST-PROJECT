@@ -2,6 +2,7 @@
 
 **File Name: LoginFragment.java**
 
+**Line-by-line documented Code:**
 ```java
 // Package declaration for the fragment class
 package com.example.notesapp_internshala.fragments;
@@ -31,16 +32,16 @@ import com.google.firebase.auth.GoogleAuthProvider;
 public class LoginFragment extends Fragment {
 
     // Declare member variables for Google sign-in and Firebase authentication
-    private GoogleSignInClient mGoogleSignInClient;
-    private FirebaseAuth mAuth;
-    
+    private GoogleSignInClient mGoogleSignInClient; // Member variable to store the GoogleSignInClient
+    private FirebaseAuth mAuth; // Member variable to store the FirebaseAuth instance
+
     // Companion object to define a static constant for the request code used in the sign-in intent
     companion object {
-        private const val RC_SIGN_IN = 9001;
+        private const val RC_SIGN_IN = 9001; // Constant to store the request code for the sign-in intent
     }
-    
+
     // Declare a progress dialog to show during authentication
-    lateinit var mProgressDialog: Dialog;
+    lateinit var mProgressDialog: Dialog; // Member variable to store the progress dialog
 
     // onCreateView() method to inflate the fragment's layout and initialize its views
     @Override
@@ -52,49 +53,49 @@ public class LoginFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_login, container, false);
 
         // Initialize Firebase authentication
-        mAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance(); // Initialize the FirebaseAuth instance
 
         // Configure Google Sign In options
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build();
+            .requestIdToken(getString(R.string.default_web_client_id)) // Request an ID token from the GoogleSignInOptions
+            .requestEmail() // Request an email address from the GoogleSignInOptions
+            .build(); // Build the GoogleSignInOptions
 
         // Build a GoogleSignInClient with the specified options
-        mGoogleSignInClient = GoogleSignIn.getClient(requireContext(), gso);
+        mGoogleSignInClient = GoogleSignIn.getClient(requireContext(), gso); // Build the GoogleSignInClient with the specified options
 
         // Find the sign-in button by its ID and set its onClickListener to call the signIn() method
-        Button signInBtn = rootView.findViewById(R.id.btnSignIn);
+        Button signInBtn = rootView.findViewById(R.id.btnSignIn); // Find the sign-in button by its ID
         signInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signIn();
+                signIn(); // Call the signIn() method when the sign-in button is clicked
             }
         });
 
         // Return the inflated view
-        return rootView;
+        return rootView; // Return the inflated view
     }
 
     // Method to initiate the sign-in process with Google
     private void signIn() {
         // Configure Google Sign In options
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build();
+            .requestIdToken(getString(R.string.default_web_client_id)) // Request an ID token from the GoogleSignInOptions
+            .requestEmail() // Request an email address from the GoogleSignInOptions
+            .build(); // Build the GoogleSignInOptions
 
         // Build a GoogleSignInClient with the specified options
-        GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(requireContext(), gso);
-        
+        GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(requireContext(), gso); // Build the GoogleSignInClient with the specified options
+
         // Create a sign-in intent
-        Intent signInIntent = googleSignInClient.getSignInIntent();
-        
+        Intent signInIntent = googleSignInClient.getSignInIntent(); // Create a sign-in intent using the GoogleSignInClient
+
         // Start the sign-in activity and pass in the request code
-        startActivityForResult(signInIntent, RC_SIGN_IN);
-        
+        startActivityForResult(signInIntent, RC_SIGN_IN); // Start the sign-in activity and pass in the request code
+
         // Show a progress dialog
-        showProgressDialog();
+        showProgressDialog(); // Show a progress dialog while the sign-in process is underway
     }
 
     // Method to handle the result of the sign-in activity
@@ -103,29 +104,29 @@ public class LoginFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
 
         // Hide the progress dialog
-        hideProgressDialog();
-        
+        hideProgressDialog(); // Hide the progress dialog after the sign-in activity has finished
+
         // Check if the request code matches the expected one
-        if (requestCode == RC_SIGN_IN) {
+        if (requestCode == RC_SIGN_IN) { // Check if the request code matches the expected one
             // Create a task to get the Google sign-in account from the passed-in intent
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data); // Create a task to get the Google sign-in account from the intent
+
             // Try to get the Google sign-in account
             try {
                 // Get the Google sign-in account
-                GoogleSignInAccount account = task.getResult(ApiException.class);
-                
+                GoogleSignInAccount account = task.getResult(ApiException.class); // Get the Google sign-in account from the task
+
                 // Show a progress dialog
-                showProgressDialog();
-                
+                showProgressDialog(); // Show a progress dialog while the authentication process is underway
+
                 // Attempt to authenticate with Firebase using the Google sign-in account
-                firebaseAuthWithGoogle(account.getIdToken());
+                firebaseAuthWithGoogle(account.getIdToken()); // Attempt to authenticate with Firebase using the Google sign-in account's ID token
             } catch (ApiException e) {
                 // Log the error code
-                Log.d("TAG", "onActivityResult: " + e.getStatusCode());
-                
+                Log.d("TAG", "onActivityResult: " + e.getStatusCode()); // Log the error code
+
                 // Show a toast message indicating that Google sign-in failed
-                Toast.makeText(context, "Google sign in failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Google sign in failed: " + e.getMessage(), Toast.LENGTH_SHORT).show(); // Show a toast message indicating that Google sign-in failed
             }
         }
     }
@@ -133,89 +134,6 @@ public class LoginFragment extends Fragment {
     // Method to authenticate with Firebase using the Google sign-in account
     private void firebaseAuthWithGoogle(String idToken) {
         // Create a Google credential using the ID token
-        GoogleAuthProvider.getCredential(idToken, null);
+        GoogleAuthProvider.getCredential(idToken, null); // Create a Google credential using the ID token
 
         // Sign in with the Google credential
-        mAuth.signInWithCredential(credential)
-            .addOnCompleteListener(requireActivity(), new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()) {
-                        // Get the Firebase user
-                        FirebaseUser user = mAuth.getCurrentUser();
-
-                        // Hide the progress dialog
-                        hideProgressDialog();
-
-                        // Show a toast message indicating that the user is signed in
-                        Toast.makeText(requireContext(), "Signed in as " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
-                        
-                        // Save the login state
-                        saveLoginState(true);
-
-                        // Navigate to the notes fragment
-                        view.findNavController().navigate(R.id.loginFragmentToNotesFragment);
-                    } else {
-                        // Show a toast message indicating that authentication failed
-                        Toast.makeText(context, "Authentication failed", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-    }
-    
-    // Method to save the login state in SharedPreferences
-    private void saveLoginState(boolean isLoggedIn) {
-        // Get the SharedPreferences instance
-        SharedPreferences sharedPreferences = requireContext().getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
-
-        // Get an editor for the SharedPreferences
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        
-        // Set the "is_user_logged_in" key to the given value
-        editor.putBoolean("is_user_logged_in", isLoggedIn);
-        
-        // Commit the changes to the SharedPreferences
-        editor.apply();
-    }
-    
-    // Method to check the login state when the fragment is resumed
-    @Override
-    public void onResume() {
-        super.onResume();
-        checkLoginState();
-    }
-
-    // Method to check the login state
-    private void checkLoginState() {
-        // Get the SharedPreferences instance
-        SharedPreferences sharedPreferences = requireContext().getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
-
-        // Get the "is_user_logged_in" key from the SharedPreferences
-        boolean isUserLoggedIn = sharedPreferences.getBoolean("is_user_logged_in", false);
-
-        // If the user is logged in, navigate to the notes fragment
-        if (isUserLoggedIn) {
-            view.findNavController().navigate(R.id.loginFragmentToNotesFragment);
-        }
-    }
-
-    // Method to show a progress dialog
-    public void showProgressDialog() {
-        // Create a new Dialog instance
-        mProgressDialog = new Dialog(requireContext());
-        
-        // Set the content view for the Dialog
-        mProgressDialog.setContentView(R.layout.dialog_progress);
-        
-        // Show the Dialog
-        mProgressDialog.show();
-    }
-
-    // Method to hide the progress dialog
-    public void hideProgressDialog() {
-        // Dismiss the Dialog
-        mProgressDialog.dismiss();
-    }
-}
-
-```
