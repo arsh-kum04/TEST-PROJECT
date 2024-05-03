@@ -2,6 +2,8 @@
 **Folder Name:** fragments
 **File Name:** LoginFragment.kt
 
+---
+
 ```kotlin
 // This is LoginFragment class which is responsible for login functionality for the app.
 class LoginFragment : Fragment() {
