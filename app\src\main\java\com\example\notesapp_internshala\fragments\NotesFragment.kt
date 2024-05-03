@@ -2,7 +2,7 @@
 
 **File Name:** NotesFragment.kt
 
-**Code:**
+**Line by Line Documented Code:**
 
 ```kotlin
 // Import necessary libraries
@@ -28,16 +28,16 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 
-
+// Class for NotesFragment
 class NotesFragment : Fragment() {
 
     // Declare variables and initialize them later
     private var binding: FragmentNotesBinding? = null
-    private val _binding get() = binding!!
+    private val _binding get() = binding!! // Safe check for null
     private lateinit var adapter: ItemNotesAdapter
     private lateinit var mGoogleSignInClient: GoogleSignInClient
     private lateinit var mAuth: FirebaseAuth
-    lateinit var mProgressDialog: Dialog
+    lateinit var mProgressDialog: Dialog // Late initialized progress dialog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -83,13 +83,11 @@ class NotesFragment : Fragment() {
         showProgressDialog()
 
         // Get notes list from Firestore
-        FirestoreClass().getNotesList(this)
+        FirestoreClass().getNotesList(this) // Pass 'this' as an argument to access methods in this fragment
 
         // Return the root view
         return rootView
     }
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -224,13 +222,13 @@ class NotesFragment : Fragment() {
                     showProgressDialog()
 
                     // Delete the note from Firestore
-                    FirestoreClass().deleteNote(this@NotesFragment, noteId)
+                    FirestoreClass().deleteNote(this@NotesFragment, noteId) // Pass 'this' as an argument to access methods in this fragment
 
                     // Remove the note from the adapter
                     adapter.notifyItemRemoved(position)
 
                     // Get the updated notes list from Firestore
-                    FirestoreClass().getNotesList(this@NotesFragment)
+                    FirestoreClass().getNotesList(this@NotesFragment) // Pass 'this' as an argument to access methods in this fragment
                 }
 
             })
