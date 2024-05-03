@@ -3,7 +3,6 @@
 **File Name: FirestoreClass.kt**
 
 ```kotlin
-
 // This class provides an interface to Firebase Firestore.
 // It contains functions for creating a new note, getting a list of notes,
 // deleting a note, and updating a note.
