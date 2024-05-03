@@ -7,7 +7,6 @@
 
 // File : EditNotesFragment.kt
 
-
 // Importing necessary libraries and classes
 package com.example.notesapp_internshala.fragments
 
