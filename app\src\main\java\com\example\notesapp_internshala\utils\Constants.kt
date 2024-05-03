@@ -50,3 +50,115 @@ public class Constants {
     // This method logs a message to the console.
 }
 ```
+
+---
+
+**Folder Name:** utils
+
+**File Name:** Converter.java
+
+```java
+// Package name
+package com.example.notesapp_internshala.utils;
+
+// Import necessary packages
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+
+import com.example.notesapp_internshala.logic.Note;
+import com.example.notesapp_internshala.logic.Notebook;
+
+// Define a class named Converter to convert Firestore documents to objects and vice-versa
+public class Converter {
+
+    // Define a method to convert a DocumentSnapshot to a Note object
+    public static Note documentToNote(DocumentSnapshot document) {
+        // Create a new Note object
+        Note note = new Note();
+
+        // Set the id of the Note object
+        note.setId(document.getId());
+
+        // Get the title of the note
+        note.setTitle(document.getString("title"));
+
+        // Get the content of the note
+        note.setContent(document.getString("content"));
+
+        // Get the timestamp of the note
+        note.setTimestamp(document.getTimestamp("timestamp"));
+
+        // Get the notebook id of the note
+        note.setNotebookId(document.getString("notebookId"));
+
+        // Return the Note object
+        return note;
+    }
+
+    // Line by line documentation:
+    // This method converts a DocumentSnapshot to a Note object.
+
+    // Define a method to convert a DocumentSnapshot to a Notebook object
+    public static Notebook documentToNotebook(DocumentSnapshot document) {
+        // Create a new Notebook object
+        Notebook notebook = new Notebook();
+
+        // Set the id of the Notebook object
+        notebook.setId(document.getId());
+
+        // Get the title of the notebook
+        notebook.setTitle(document.getString("title"));
+
+        // Get the timestamp of the notebook
+        notebook.setTimestamp(document.getTimestamp("timestamp"));
+
+        // Return the Notebook object
+        return notebook;
+    }
+
+    // Line by line documentation:
+    // This method converts a DocumentSnapshot to a Notebook object.
+
+    // Define a method to convert a Note object to a HashMap
+    public static HashMap<String, Object> noteToHashMap(Note note) {
+        // Create a new HashMap
+        HashMap<String, Object> hashMap = new HashMap<>();
+
+        // Set the title of the note in the HashMap
+        hashMap.put("title", note.getTitle());
+
+        // Set the content of the note in the HashMap
+        hashMap.put("content", note.getContent());
+
+        // Set the timestamp of the note in the HashMap
+        hashMap.put("timestamp", note.getTimestamp());
+
+        // Set the notebook id of the note in the HashMap
+        hashMap.put("notebookId", note.getNotebookId());
+
+        // Return the HashMap
+        return hashMap;
+    }
+
+    // Line by line documentation:
+    // This method converts a Note object to a HashMap.
+
+    // Define a method to convert a Notebook object to a HashMap
+    public static HashMap<String, Object> notebookToHashMap(Notebook notebook) {
+        // Create a new HashMap
+        HashMap<String, Object> hashMap = new HashMap<>();
+
+        // Set the title of the notebook in the HashMap
+        hashMap.put("title", notebook.getTitle());
+
+        // Set the timestamp of the notebook in the HashMap
+        hashMap.put("timestamp", notebook.getTimestamp());
+
+        // Return the HashMap
+        return hashMap;
+    }
+
+    // Line by line documentation:
+    // This method converts a Notebook object to a HashMap.
+}
+```
