@@ -22,9 +22,8 @@ import org.junit.Assert.*;
  * Instrumented test, which will execute on an Android device.
  *
  * See [testing documentation](http://d.android.com/tools/testing).
- * Line: 12 & 13 - Javadoc Comments
  */
-// Line: 15 - This line annotates the class with @RunWith(AndroidJUnit4::class) to indicate that this is an instrumented test.
+// Line: 12 & 13 - Javadoc Comments
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
     // Line: 18 - This line defines a test method using the @Test annotation to test the app's context.
