@@ -1,23 +1,31 @@
 **Folder Name:** fragments
 **File Name:** AddNotesFragment.kt
 **Line by Line Documented Code**:
-
 ```java
 // Importing required libraries
+// Importing Dialog from Android library
 import android.app.Dialog;
+// Importing Bundle class from Android library
 import android.os.Bundle;
+// Importing Fragment from AndroidX library
 import androidx.fragment.app.Fragment;
+// Importing required libraries for manipulating view
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+// Importing required libraries for finding Ids
 import android.widget.ImageButton;
 import android.widget.TextView;
+// Importing required libraries to show toast
 import android.widget.Toast;
+// Importing FirebaseFirestoreClass from Firestore package
 import com.example.notesapp_internshala.Firebase.FirestoreClass;
+// Importing required resources from R package
 import com.example.notesapp_internshala.R;
+// Importing Note model
 import com.example.notesapp_internshala.models.Note;
 
-// Class Definition of AddNotesFragment
+// Class Definition of AddNotesFragment extending Fragment
 class AddNotesFragment : Fragment() {
     // Variable for progress dialog
     lateinit var mProgressDialog: Dialog;
