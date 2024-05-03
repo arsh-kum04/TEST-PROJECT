@@ -5,6 +5,7 @@
 ```kotlin
 // Data class to represent a Note object in the app
 data class Note(
+
     // Unique identifier for the current user
     val currentUserId: String = "",
 
