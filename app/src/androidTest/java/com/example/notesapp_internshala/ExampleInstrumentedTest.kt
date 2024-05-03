@@ -43,3 +43,25 @@ class ExampleInstrumentedTest {
     }
 }
 ```
+
+**Line-by-Line Documentation:**
+
+// Line: 1: Imports the androidx test library for instrumentation testing.
+
+// Line: 2: Imports the androidx test library for running tests on the AndroidJUnit4 framework.
+
+// Line: 4: Imports the JUnit4 framework for writing and running tests.
+
+// Line: 5: Imports the JUnit4 Runner class for running tests.
+
+// Line: 7: Imports the Assert class from the JUnit4 framework for assertions.
+
+// Line: 12-13: Javadoc comments describing the purpose of the class.
+
+// Line: 15: Annotates the class with @RunWith(AndroidJUnit4::class) to indicate that it is an instrumented test.
+
+// Line: 18: Defines a test method annotated with @Test to test the app's context.
+
+// Line: 20: Gets the context of the app under test using InstrumentationRegistry.getInstrumentation().targetContext.
+
+// Line: 23: Asserts that the package name of the app under test matches the expected package name using assertEquals.
