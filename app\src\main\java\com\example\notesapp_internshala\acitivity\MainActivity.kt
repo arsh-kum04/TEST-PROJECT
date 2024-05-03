@@ -22,21 +22,21 @@
 
 **// Declare a variable to keep track of whether the back button has been pressed once**
 
-// We declare a private variable called backPressedOnce. This variable will be used to track whether the back button has been pressed once or not.
+// We declare a private variable called `backPressedOnce`. This variable will be used to track whether the back button has been pressed once or not.
 // This is necessary to handle the back button press differently based on whether the current fragment is NotesFragment or not.
 
 **// Override onCreate**
 
-// The onCreate method is the entry point of the activity. It is called when the activity is first created.
-// Here, we are setting the layout for the activity, initializing variables, and setting up the navigation controller.
+// The `onCreate` method is the entry point of the activity. It is called when the activity is first created.
+// Here, we are setting the layout for the activity (`R.layout.activity_main`), initializing variables, and setting up the navigation controller.
 
 **// Override onBackPressed**
 
-// The onBackPressed method is called when the back button is pressed.
+// The `onBackPressed` method is called when the back button is pressed.
 // Here, we are handling the back button press differently based on whether the current fragment is NotesFragment or not.
-// If the current fragment is NotesFragment, we show a toast message and set the backPressedOnce variable to true.
-// We also create a handler to reset the backPressedOnce variable after a delay of 2 seconds.
-// If the current fragment is not NotesFragment, we proceed with the default behavior of super.onBackPressed().
+// If the current fragment is NotesFragment, we show a toast message and set the `backPressedOnce` variable to true.
+// We also create a handler to reset the `backPressedOnce` variable after a delay of 2 seconds.
+// If the current fragment is not NotesFragment, we proceed with the default behavior of `super.onBackPressed()`.
 
 ```kotlin
 // Package Declaration
@@ -44,6 +44,7 @@ package com.example.notesapp_internshala.activity
 
 // Importing required classes
 import android.os.Bundle
+import android.os.Handler
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavGraph
