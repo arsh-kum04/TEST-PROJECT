@@ -5,13 +5,19 @@
 ```java
 // Import necessary libraries.
 
-// Class to handle Firebase operations.
+/*
+ * Class to handle Firebase operations like creating note, fetching notes, and deleting notes.
+ */
 public class FirestoreClass {
 
     // Initialize Firebase Firestore instance.
     private val mFireStore = FirebaseFirestore.getInstance();
 
-    // Get current user ID.
+    /*
+     * Function to get current user ID from Firebase Authentication.
+     *
+     * @return String: Current user ID.
+     */
     public String getCurrentUserId() {
         // Get current user from Firebase Authentication.
         var currentUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -26,7 +32,12 @@ public class FirestoreClass {
         return currentUserID;
     }
 
-    // Create a note in Firestore.
+    /*
+     * Function to create a note in Firestore.
+     *
+     * @param fragment: Reference to the fragment in which this method is called from.
+     * @param note: Note object to be created in Firestore.
+     */
     public void createNote(fragment: AddNotesFragment, note: Note) {
         // Create a document in "notes" collection for the current user.
         mFireStore.collection(Constants.NOTES)
@@ -48,7 +59,11 @@ public class FirestoreClass {
             });
     }
 
-    // Get list of notes from Firestore.
+    /*
+     * Function to get list of notes from Firestore.
+     *
+     * @param fragment: Reference to the fragment in which this method is called from.
+     */
     public void getNotesList(fragment: NotesFragment) {
         // Query "notes" collection for documents where "current_user_id" field matches current user ID and order by "timestamp" field in descending order.
         mFireStore.collection(Constants.NOTES)
@@ -83,7 +98,12 @@ public class FirestoreClass {
     }
 
 
-    // Delete a note from Firestore.
+    /*
+     * Function to delete a note from Firestore.
+     *
+     * @param fragment: Reference to the fragment in which this method is called from.
+     * @param noteId: ID of the note to be deleted.
+     */
     public void deleteNote(fragment: NotesFragment, noteId: String) {
         // Delete document from "notes" collection with matching "noteId".
         mFireStore.collection(Constants.NOTES)
