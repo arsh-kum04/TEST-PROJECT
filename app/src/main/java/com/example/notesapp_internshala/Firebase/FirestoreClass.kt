@@ -1,13 +1,8 @@
 **Folder Name:** Firebase
-
 **File Name:** FirestoreClass.kt
-
 **Line by Line Documented Code:**
-
 ```kotlin
 // This class provides an interface to Firebase Firestore.
-// It contains functions for creating a new note, getting a list of notes,
-// deleting a note, and updating a note.
 class FirestoreClass {
 
     // Access the Firestore instance.
@@ -97,9 +92,7 @@ class FirestoreClass {
                 Log.e(fragment.javaClass.simpleName , "Error while loading Notes" , e)
             }
     }
-
-
-    // Delete a note from the database.
+// Delete a note from the database.
     fun deleteNote(fragment: NotesFragment, noteId: String) {
         // Delete the note from the 'notes' collection.
         mFireStore.collection(Constants.NOTES)
@@ -120,7 +113,5 @@ class FirestoreClass {
                 Toast.makeText(fragment.context, "Error while deleting the note", Toast.LENGTH_LONG).show()
             }
     }
-
-
 }
 ```
