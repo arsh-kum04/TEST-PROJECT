@@ -1,6 +1,6 @@
-**Folder Name: Firebase**
+**Folder Name:** Firebase
 
-**File Name: FirestoreClass.kt**
+**File Name:** FirestoreClass.kt
 
 **Line by Line Documented Code:**
 
@@ -15,11 +15,16 @@ class FirestoreClass {
 
     // Get the current user's ID.
     fun getCurrentUserId(): String {
+        // Get the current user from Firebase Authentication.
         var currentUser = FirebaseAuth.getInstance().currentUser
+        
+        // If the current user is not null, return the user ID.
         var currentUserID = ""
         if (currentUser != null) {
             currentUserID = currentUser.uid
         }
+        
+        // Return the current user ID.
         return currentUserID
     }
 
